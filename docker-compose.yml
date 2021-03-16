@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  vbox_build:
+    image: quay.io/bellerophonio/vbox:${QUAY_OCI_IMAGE_TAG}
+    container_name: vbox_build
+    image: quay.io/bellerophonio/vbox:${QUAY_OCI_IMAGE_TAG}
+    container_name: hugo_cms
+    build:
+       context: oci/first/
+       dockerfile: Dockerfile
+       args:
+         - VIRTUALBOX_VERSION=6.1.18
+         - DEBIAN_BASE_TAG=buster-slim
+    env_file:
+      - ./.vbox.env
+    command: bash
+    volumes:
+      - .:/bellerophhon-io/bubble/sources/:rw
