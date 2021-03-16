@@ -8,4 +8,22 @@ Primary information source I used : https://www.virtualbox.org/wiki/Linux%20buil
 
 ## How
 
-Using docker containers
+Using docker containers :
+
+```bash
+export WHERE_I_WORK=$(mktemp -d -t vbox-build-from-source_XXXXXX)
+
+git clone git@github.com:bellerophon-io/virutalbox-build-from-source.git "${WHERE_I_WORK}"
+cd "${WHERE_I_WORK}"
+
+export FEATURE_ALIAS='dev-compose'
+export DESIRED_VERSION="feature/${FEATURE_ALIAS}"
+export DESIRED_VERSION="0.0.1"
+export DESIRED_VERSION="develop"
+
+git checkout "${DESIRED_VERSION}"
+
+docker-compose build
+# docker-compose up -d
+
+```
